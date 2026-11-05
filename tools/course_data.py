@@ -1,0 +1,316 @@
+﻿"""Authoring data for the Vikkypaedia breastfeeding-counselling course.
+
+Source texts
+  S1  "Effective Counselling - Effective Breastfeeding: Cross Cradle Hold and 45 Counselling
+       points for Breastfeeding" (Spoken Tutorial Project, IIT Bombay; Maa aur Shishu Poshan)  -> 45 numbered points
+  S2  "Breastfeeding Assessment Form" (04.08.2022)
+  S3  "B-R-E-A-S-T-Feed Observation Form" (adapted from H.C. Armstrong, Training Guide in
+       Lactation Management, IBFAN/UNICEF 1992)
+
+Every clinical statement below is traceable to S1/S2/S3 (point numbers are cited as P#).
+Cases, vignettes, and question stems are fictional and authored for teaching.
+"""
+
+# ---------------------------------------------------------------- 45 points (source-faithful text)
+P = {
+1: "The first and most important tip is to recognise the baby's hunger cues. If the mother recognises early hunger cues she can breastfeed using the cross-cradle hold easily. If she doesn't, the baby becomes restless and starts crying because of hunger, won't attach deeply to the breast, and the mother's anxiety increases. Early hunger cues include moving the body or head from side to side, yawning, opening the mouth, salivating, putting the hand in the mouth, etc.",
+2: "The mother must wash her hands thoroughly with soap and dry them.",
+3: "She should drink boiled and cooled clean water.",
+4: "She should sit comfortably on the floor, bed or a chair with her feet well-supported.",
+5: "She should sit straight with her back well-supported, shoulders relaxed in a comfortable position, not drooping.",
+6: "The mother should remove both the blouse and the bra covering her breast because the pressure exerted by them can cause a lump in the breast.",
+7: "Remove the blanket or bed sheet covering the baby, and the baby's caps, mittens and socks. In winter, dress the baby in warm clothes, but not in very thick cloth, because it can become a barrier between mother and baby. Once the baby is deeply attached, the mother can cover its body with a cloth.",
+8: "Hold the baby's head with the hand on the other side of the breast she wants to feed from. For the right breast, hold the head with the left hand. Support the baby's body.",
+9: "Hold the baby's legs under the armpit of the same hand that holds the head so the body doesn't slide downwards. If possible, place the baby's hip joint in her elbow.",
+10: "Hold the baby in the correct position and bring it to the breast. She should not bend down; she should bring the baby up to her breast.",
+11: "The mother's thumb should be on the bone behind one of the baby's ears and her fingers on the bone behind the other ear.",
+12: "The wrist of the hand holding the head should rest between the baby's shoulder blades. She must support the baby's entire body with that hand.",
+13: "The baby's ear, shoulder and hip should be in a straight line.",
+14: "The baby's stomach should gently press against the mother's chest.",
+15: "The baby's nostrils should be in line with the mother's nipple. The baby should be facing the breast, not the mother's face.",
+16: "Just as adults extend the neck backwards while drinking water, the mother must extend the baby's neck backwards by tilting its face upwards and bringing its chin close to the breast. This brings the baby's nare to the mother's nipple.",
+17: "Hold the breast in a U-shape hold from the bottom, with the hand on the same side as the breast the baby will feed from.",
+18: "Imagine a clock on the breast with the nipple at the centre. For the right breast, the tip of the right thumb is at 9 o'clock, the tips of the other fingers at 3 o'clock, and the dip of the U falls at 6 o'clock.",
+19: "The thumb and fingers must be placed at an equal distance from the nipple.",
+20: "There should be a distance of 3 fingers between the nipple and the thumb, and between the nipple and the other fingers.",
+21: "Keep the baby's body in a completely horizontal plane so that the baby's upper lip is at 9 o'clock and lower lip at 3 o'clock on the right breast (vice versa on the left). The mother's thumb is in front of the baby's upper lip and her fingers behind the lower lip. Fingers on the breast are placed parallel to the baby's lips.",
+22: "The dark area around the nipple is the areola. When the baby opens its mouth widely, bring the baby to the breast and compress the breast, so the lower part of the areola, where the lower lip sits, easily goes into the baby's mouth. Holding and compressing correctly, at the right time, ensures deep attachment to the lower part of the areola.",
+23: "The breast must be evenly compressed by the thumb and fingers. Do not hold only the nipple and put it in the baby's mouth.",
+24: "Do not compress the breast in a V-shape hold. The baby will attach only to the nipple and get very little milk.",
+25: "Lightly brush the nipple against the baby's upper lip so the baby opens its mouth widely.",
+26: "When the baby's mouth is open between 120 and 160 degrees, put the lower part of the areola inside the mouth. This can take 2-3 minutes, but wait until the mouth is wide. If hurried into a mouth not yet wide, the baby attaches to the nipple only and gets too little milk. If the baby does not open its mouth widely for more than 10 minutes, it means the baby is not hungry.",
+27: "The baby's upper lip should be a little above the nipple, and the lower lip at the border of the areola. If the areola is small, the lower lip will be beyond the areola border. This is correct, deep attachment.",
+28: "The baby's lower lip should be curled in the outward direction.",
+29: "The baby's lips and chin should be completely embedded in the mother's breast.",
+30: "To check deep attachment, lightly press the breast upwards near the baby's lower lip. Check whether the lower part of the areola is entirely inside the mouth and whether the lower lip is curled outward.",
+31: "Also check whether the baby's mouth is open at least 120 degrees. It is essential to check these three points, and the mother must be taught to check them.",
+32: "Once deep attachment is confirmed, the mother can release her breast and place that hand on the baby's back for support - but must not move the hand holding the head. With a very big or heavy breast, the areola can slide out after release; she can then support the breast with her elbow, or keep holding it and support that hand with 2-3 pillows below it.",
+33: "Breastfeed from one breast completely before offering the other breast.",
+34: "To check whether one breast has been fed completely, express milk from that breast by hand. If thin watery milk comes out, or there is a good flow of thick milk, the baby has not finished that breast; continue on the same breast.",
+35: "Feed from each breast completely - the thin watery milk rich in protein that comes first and the thick milk rich in fats that comes later. Both foremilk and hindmilk are necessary for growth. Offer the other breast only after finishing one completely; if still hungry, the baby will feed from the second breast too.",
+36: "Burp the baby before offering the second breast: sit the baby on her lap, cup the baby's jaw with one hand, keep the other hand on the back, and bend the torso slightly forward. The baby will burp within 2-3 minutes and will also open its eyes.",
+37: "If the baby falls asleep while breastfeeding, caress its back or tickle its feet. The mother can also sit the baby in the burping position.",
+38: "If the baby is attached only to the nipple, or goes to sleep at the breast, the mother can put her clean little finger in the baby's mouth to remove the breast. This opens the clenched mouth and the areola comes out easily.",
+39: "If the baby's nose is pressed tightly into the breast, gently extend the baby's neck outward so that the chin presses further into the breast and the forehead is pulled away.",
+40: "With correct breastfeeding, the baby's cheeks look round and full with no dimple. The baby won't make fast swallowing sounds. When swallowing milk, the baby's jaw slowly and distinctly drops down.",
+41: "If dimples appear in the cheeks, the baby is feeding from the nipple only. More of the upper areola than the lower areola is in the mouth, or the lips and chin are not completely embedded in the breast.",
+42: "Every 24 hours the mother must breastfeed 10 to 12 times, of which at least 3 to 4 feeds must be at night.",
+43: "Exclusively breastfeed for 6 months. After 6 months, continue breastfeeding along with complementary feeding until 2 years of age.",
+44: "The baby grows very fast at 2 weeks, 6 weeks and 3 months. The baby needs more milk then, so the mother must breastfeed more frequently and for longer each session. She must also learn the correct technique.",
+45: "To express milk by hand, keep thumb, nipple and fingers in a straight line. The nipple is in the middle of the thumb and the forefinger or middle finger, with a distance of 2 fingers between the thumb and nipple and between the finger and nipple. Constantly and gently press the breast towards the chest, then without moving the hand gently compress with thumb and fingers and release. Check whether the milk is thin or thick.",
+}
+
+# illustrations cropped from the PDF (file order -> point number)
+IMG_MAP = {
+ "p02": [1,1,1,1,2,3], "p03": [4,5,6,7,7], "p04": [8,8,9,10], "p05": [11,12,12,13,14],
+ "p06": [15,16,17,18], "p07": [18,20,20,21,21,21], "p08": [21,22,22,22,23,24],
+ "p09": [25,26,26], "p10": [27,28,29,30], "p11": [31,32,32,32], "p12": [33,34,35,35,35],
+ "p13": [36,36,37,38], "p14": [39,39,40,41], "p15": [42,43,44,45], "p16": [45,45,45],
+}
+IMG_ALT = {
+ "p02_1":"Baby asleep with head turned, an early hunger cue", "p02_2":"Baby with hand in mouth", "p02_3":"Baby moving head and body side to side",
+ "p02_4":"Baby crying with open mouth, a late hunger cue", "p02_5":"Mother washing hands with soap", "p02_6":"Mother drinking a glass of water",
+ "p03_1":"Mother sitting on a bed with feet supported", "p03_2":"Mother sitting straight with relaxed shoulders", "p03_3":"Mother with blouse opened and breast exposed",
+ "p03_4":"Mother feeding a baby with loose clothing", "p03_5":"Baby wrapped in a thick cap and cloth, marked with a red cross",
+ "p04_1":"Left hand holding the baby's head for right-breast feed", "p04_2":"Hand supporting the baby's body", "p04_3":"Baby's legs held under the mother's armpit", "p04_4":"Mother lifting the baby up to the breast without bending",
+ "p05_1":"Thumb and fingers behind the baby's ears", "p05_2":"Hand cupping the baby's head from behind", "p05_3":"Wrist between baby's shoulder blades supporting the whole body", "p05_4":"Straight line through baby's ear, shoulder and hip", "p05_5":"Baby's stomach pressed against the mother's chest",
+ "p06_1":"Baby's nostrils aligned with the nipple", "p06_2":"Baby's neck extended backwards, chin near breast", "p06_3":"U-shape hold of the breast from below", "p06_4":"Clock face on the areola with 9, 3 and 6 marked",
+ "p07_1":"Clock positions of thumb and fingers on the breast", "p07_2":"Fingers at equal distance from the nipple (top view)", "p07_3":"Three-finger distance from nipple to thumb and fingers",
+ "p07_4":"Baby's lips seen from the side near the nipple", "p07_5":"Baby's lips with the mother's thumb above and fingers below", "p07_6":"Top view of baby's lips and mother's hand parallel to the lips",
+ "p08_1":"Woman biting a burger, showing the way the mouth opens wide", "p08_2":"Breast compressed and brought to an open-mouthed baby", "p08_3":"Baby's lower lip taking the lower areola", "p08_4":"Baby latched deeply on the lower areola",
+ "p08_5":"Thumb and fingers evenly compressing the breast", "p08_6":"V-shape hold marked with a red cross",
+ "p09_1":"Nipple brushing the baby's upper lip", "p09_2":"Baby's mouth open wide, marked correct", "p09_3":"Baby's mouth only partly open, marked wrong",
+ "p10_1":"Baby's lips relative to nipple and areola border", "p10_2":"Baby's lower lip curled outward", "p10_3":"Baby's lips and chin embedded in the breast", "p10_4":"Mother's finger pressing the breast near the lower lip to check the latch",
+ "p11_1":"Checking that the baby's mouth is open at least 120 degrees", "p11_2":"Mother releases the breast and supports the baby's back", "p11_3":"Mother supporting a large breast with her elbow", "p11_4":"Mother supporting her hand with pillows",
+ "p12_1":"Two breasts side by side, one emptied", "p12_2":"Mother expressing milk to check the flow", "p12_3":"Thin watery foremilk dripping into a glass", "p12_4":"Thick creamy hindmilk dripping into a glass", "p12_5":"Foremilk (protein) and hindmilk (fat) both contribute to growth",
+ "p13_1":"Mother sitting the baby on her lap to burp", "p13_2":"Baby sitting forward with jaw cupped, burping", "p13_3":"Tickling the baby's feet to wake it", "p13_4":"Little finger entering the corner of the baby's mouth to break suction",
+ "p14_1":"Baby's nose pressed into breast, marked wrong", "p14_2":"Neck gently extended so chin presses in, marked correct", "p14_3":"Round full cheeks, marked correct", "p14_4":"Dimpled cheek, marked wrong",
+ "p15_1":"Mother feeding by day and night", "p15_2":"Complementary foods around the breastfeeding mother", "p15_3":"Baby at 2 weeks, 6 weeks and 3 months", "p15_4":"Mother expressing milk into a cup",
+ "p16_1":"Thumb, nipple and finger in a straight line for expression", "p16_2":"Hand position with two-finger distance from the nipple", "p16_3":"Mother feeding in cross-cradle hold",
+}
+
+# ---------------------------------------------------------------- Modules
+MODULES = [
+ dict(id="ready", n=1, icon="🌅", title="Ready to Feed", sub="Hunger cues and preparing mother and baby",
+  pts=[1,7], mins=20, level="Remember → Apply",
+  hook="Day 2. A newborn is brought to the mother crying, red-faced and rigid. She tries to feed, but he keeps pulling off. What did everyone miss before the first attempt?",
+  outcomes=["Recognise early versus late hunger cues in a baby.","Prepare the mother (hygiene, hydration, posture, clothing) and the baby (unwrapped, appropriately dressed) before a feed.","Explain why feeding at the early-cue stage makes deep attachment easier."],
+  units=[
+   dict(t="Read the baby before you touch the baby", pts=[1], think="A baby is moving his head side to side and opening his mouth. Is this the right moment to feed, or should the mother wait until he cries?", answer="Now. Head movements, yawning, opening the mouth, salivating and hand-to-mouth are early cues (P1). Crying is a late cue: a distressed baby will not attach deeply and the mother's anxiety rises.", why="Feeding at the early-cue stage makes the cross-cradle hold and deep latch far easier.", err="Waiting for crying before offering the breast."),
+   dict(t="Prepare the mother", pts=[2,3,4,5,6], think="List four things you would check about the mother before the baby is brought to the breast.", answer="Hands washed with soap and dried (P2); boiled and cooled water to drink (P3); seated comfortably with feet supported (P4); back supported with shoulders relaxed (P5); blouse and bra removed from the breast being used (P6).", why="A relaxed, supported mother can hold the baby steadily and avoid leaning forward, which ruins positioning later.", err="Shoulders tense, leaning over the baby with no back support."),
+   dict(t="Prepare the baby", pts=[7], think="It is winter. The baby is in a cap, mittens, socks and a thick blanket. What should change before the feed?", answer="Unwrap the blanket and remove cap, mittens and socks; dress in warm but not thick clothing, since thick cloth becomes a barrier between mother and baby (P7). Once the baby is deeply attached, a cloth can be placed over the body.", why="Skin-to-skin closeness helps the baby stay close and awake and keeps the body in the correct line.", err="Leaving the baby heavily wrapped so he is sleepy and held away from the mother."),
+  ],
+  take=["Early cues: head/body movement, yawning, opening mouth, salivating, hand to mouth. Crying = late.","Mother: wash hands, drink boiled and cooled water, sit supported, shoulders relaxed, breast uncovered.","Baby: unwrap; warm but not thick clothing; cover after deep attachment."],
+  mcq=[
+   dict(q="A mother says, 'I wait until he cries so I know he's really hungry.' What is the best counselling response?", o=["Agree; crying is the most reliable sign.","Explain that crying is a late cue, and teach her early cues such as opening the mouth and hand-to-mouth.","Tell her to feed on a strict clock regardless of cues.","Suggest giving water first to calm the baby."], a=1, why="Source P1: if early cues are missed the baby becomes restless and cries, will not attach deeply, and the mother becomes anxious. The other options either reinforce waiting for a late cue or add unsupported steps.", ref="P1"),
+   dict(q="Which behaviour is an EARLY hunger cue?", o=["Loud crying with a red face","Putting the hand into the mouth","Stiffening and arching away","Falling into deep sleep"], a=1, why="P1 lists hand in mouth, yawning, salivating, mouth opening and head/body movement as early cues. Loud crying is the late, distressed stage.", ref="P1"),
+   dict(q="Why does the course advise against very thick clothing on the baby during a feed?", o=["It makes the baby too hot to digest milk.","It becomes a barrier between mother and baby while breastfeeding.","It prevents the baby opening his mouth.","It hides hunger cues."], a=1, why="P7 states very thick cloth can become a barrier between mother and baby. Warm clothing is still advised in winter; a cloth may cover the baby once deep attachment is achieved.", ref="P7"),
+   dict(q="Which preparation step is NOT part of the mother's preparation in the source?", o=["Wash hands with soap and dry them","Drink boiled and cooled clean water","Sit straight with back supported","Apply cream to the nipple before every feed"], a=3, why="P2-P6 list hand washing, boiled and cooled water, comfortable seating, a supported straight back with relaxed shoulders, and removing blouse and bra. Nipple cream is not included.", ref="P2-P6"),
+   dict(q="A mother sits on the edge of a stool, back unsupported, shoulders hunched, leaning over the baby. What is the likely consequence for positioning?", o=["None; positioning is determined only by the baby's head.","She will tire and bend down to the baby instead of bringing the baby up to the breast.","The baby will latch more deeply because he is closer.","Her milk flow will stop immediately."], a=1, why="P4-P5 and P10: a supported seat and straight back let her bring the baby up to the breast instead of bending down. Hunching leads to the unfavourable pattern 'shoulders tense, leans over baby' in the observation form.", ref="P4, P5, P10"),
+  ],
+  case=dict(id="c1", title="The crying newborn", stages=[
+   dict(s="Meena's baby is 2 days old. He is wrapped in a cap, mittens and a thick shawl and has been crying for ten minutes. Meena looks anxious and says he 'keeps pulling off'. What do you do first?", o=["Insist she feed immediately in the position she is in.","Settle the mother: sit her comfortably with back and feet supported, wash hands, and unwrap the baby.","Give the baby water to calm him.","Ask her to wait until he sleeps."], a=1, f=["Feeding in a hurry with an unprepared mother and a crying baby repeats the problem (P1, P4-P7).","Correct. Preparation first (P2-P7) reduces anxiety and makes positioning possible.","Water is not part of the source's plan and delays feeding.","Waiting until he sleeps ignores the hunger that is driving his distress."]),
+   dict(s="The baby calms a little once unwrapped. You notice he is now opening his mouth and moving his head side to side. What does this mean?", o=["He is now ready; these are cues to proceed with positioning and attachment.","He is bored.","He is full.","It means nothing; keep waiting."], a=0, f=["Correct: opening the mouth and head movements are hunger cues (P1). Proceed to position him.","Not supported by the source.","Hunger cues indicate readiness, not satiety.","These are the early cues the counselling is designed to catch."]),
+  ], end="Teaching point: prepare the mother, undress the baby, and read cues before attempting to attach (P1-P7).")),
+
+ dict(id="position", n=2, icon="🤱", title="Cross-Cradle Position", sub="Holding the baby with head, body and neck in the right place",
+  pts=[8,16], mins=25, level="Understand → Apply",
+  hook="Two mothers hold the same baby. One feels pain within a minute; the other feeds comfortably for twenty. Same breast. What differs is where the hands, wrist and baby's neck are.",
+  outcomes=["Describe the cross-cradle hold: which hand holds the head, where the wrist and fingers go, and where the legs and hip rest.","Verify the baby's alignment: ear-shoulder-hip line, stomach to chest, nostrils at the nipple, neck slightly extended.","Correct common positioning errors."],
+  units=[
+   dict(t="Which hand, which breast", pts=[8,9,10], think="The baby will feed from the RIGHT breast. Which hand holds the baby's head, and where do the baby's legs go?", answer="The LEFT hand holds the head and supports the body (P8). The baby's legs are held under the armpit of that same left arm so the body does not slide, with the hip joint in her elbow if possible (P9). She brings the baby UP to the breast rather than bending down (P10).", why="The hand opposite the breast controls the head, leaving the same-side hand free to hold the breast.", err="Using the same-side hand to hold the head; bending down to the baby."),
+   dict(t="The hand on the head", pts=[11,12], think="Where exactly do the thumb, fingers and wrist go?", answer="Thumb on the bone behind one ear, fingers on the bone behind the other ear (P11). The wrist rests between the baby's shoulder blades and that hand supports the entire body (P12).", why="Holding behind the ears (not pressing the back of the head) keeps the head free to extend. The assessment form flags 'pressure on the back of the head' as unfavourable.", err="Pushing on the back of the head; supporting only the shoulders or head."),
+   dict(t="Body alignment", pts=[13,14,15,16], think="Name four alignment checks you can make by looking at the baby from the side and front.", answer="Ear, shoulder and hip in a straight line (P13); stomach gently pressing the mother's chest (P14); nostrils in line with the nipple, facing the breast rather than the mother's face (P15); neck extended back like an adult drinking water, chin close to the breast (P16).", why="Straight alignment plus neck extension lets the baby swallow easily and brings the chin and lower lip to the lower areola.", err="Neck twisted or flexed forward; baby's nose higher than the nipple; baby in a diagonal position."),
+  ],
+  take=["Opposite hand holds head: LEFT hand for RIGHT breast.","Thumb and fingers behind the ears; wrist between shoulder blades; hold the whole body.","Ear-shoulder-hip straight; stomach to chest; nostril at nipple; neck extended; bring baby UP."],
+  mcq=[
+   dict(q="For feeding from the left breast in the cross-cradle hold, which hand supports the baby's head?", o=["Left hand","Right hand","Either; it doesn't matter","Neither; the baby's head is unsupported"], a=1, why="P8: the hand on the opposite side of the breast holds the head (left hand for the right breast, so right hand for the left breast).", ref="P8"),
+   dict(q="Where should the mother's thumb and fingers be on the baby's head?", o=["On the baby's cheeks","On the bones behind the two ears","On top of the skull","On the back of the neck pressing forward"], a=1, why="P11: thumb on the bone behind one ear and fingers on the bone behind the other. Pressure on the back of the head is an unfavourable sign on the assessment form.", ref="P11"),
+   dict(q="Which three body parts of the baby should lie in a straight line?", o=["Nose, chin, chest","Ear, shoulder, hip","Shoulder, knee, ankle","Head, elbow, foot"], a=1, why="P13: ear, shoulder and hip in a straight line; the assessment form flags twisted body or neck as unfavourable.", ref="P13"),
+   dict(q="Why must the baby's neck be extended slightly backward during attachment?", o=["So the baby can see the mother's face","So the nare comes to the nipple and the chin approaches the breast","So the baby falls asleep sooner","So the baby's ear touches the breast"], a=1, why="P16: just like adults extend the neck to drink water, extension of the baby's neck brings the nare to the nipple and the chin to the breast.", ref="P16"),
+   dict(q="A mother is bending forward over a baby lying on her lap and the baby's face is turned toward her face. Which corrections are needed?", o=["Bring the baby up to the breast and turn the baby's face and body to face the breast.","Press the back of the baby's head firmly towards the breast.","Hold the baby farther away from her chest.","Do nothing; the position is acceptable."], a=0, why="P10 and P15: bring the baby up (don't bend down) and keep the baby facing the breast, not the mother's face. Pushing the head or holding the baby away are listed as unfavourable.", ref="P10, P15"),
+  ],
+  case=dict(id="c2", title="The twisted neck", stages=[
+   dict(s="Anita is feeding her baby from the right breast. You see her left hand only supporting the baby's shoulders; the baby's body is angled diagonally with his face toward Anita's face, and his neck is turned. She winces at each suck. What is your first correction?", o=["Tell her to push the baby's head against the breast.","Reposition: support the whole body, align ear-shoulder-hip, stomach to chest, face toward the breast.","Move her to the other breast.","Tell her to hold the nipple only and insert it."], a=1, why=None, f=["Pressure on the back of the head is unfavourable (P11, assessment form).","Correct (P9, P12-P15): whole-body support, alignment, stomach to chest, face toward breast.","Changing breast does not fix positioning.","Holding only the nipple causes nipple-only attachment (P23-P24)."]),
+   dict(s="After repositioning, the baby's nostril is level with the nipple but his chin is far from the breast. What do you do?", o=["Flex his neck forward so his chin touches his chest.","Extend his neck slightly back, bringing the chin close to the breast so the nare comes to the nipple.","Lower the baby below the breast.","Tilt the mother back."], a=1, f=["Neck flexed forward is an unfavourable pattern on the assessment form.","Correct (P16).","Bring the baby up to the breast (P10).","Not part of the source technique."]),
+  ], end="Teaching point: position first. Alignment and neck extension (P13-P16) set up a deep latch.")),
+
+ dict(id="hold", n=3, icon="🕘", title="Hold & Shape the Breast", sub="The U-hold, the clock, and three fingers",
+  pts=[17,24], mins=25, level="Apply → Analyse",
+  hook="A mother holds the breast like a 'V' scissors-grip. The baby latches, but only to the nipple. Her pain begins. The change that fixes this takes five seconds: the shape of the hand.",
+  outcomes=["Demonstrate the U-shape hold using the clock-face model (9, 3 and 6 o'clock).","State the three-finger distance and the 'parallel to baby's lips' rule.","Contrast the U-hold with the V-hold and explain why compression must be even."],
+  units=[
+   dict(t="The U-hold and the clock", pts=[17,18,19,20], think="For the baby feeding from the RIGHT breast, where do the right thumb tip, the other fingertips and the dip of the U fall on the breast clock?", answer="Thumb tip at 9 o'clock, other fingertips at 3 o'clock, dip of the U at 6 o'clock (P18). Thumb and fingers at equal distance from the nipple (P19), three fingers' distance from the nipple (P20).", why="This shapes the lower areola so the baby's lower lip can take a large mouthful.", err="Fingers too close to or too far from the nipple; not equal distance."),
+   dict(t="Aligning the hand with the baby's lips", pts=[21], think="How should the mother's fingers sit relative to the baby's lips, and what plane should the baby's body be in?", answer="Fingers parallel to the baby's lips; baby's body completely horizontal so that the upper lip is at 9 o'clock and the lower lip at 3 o'clock for the right breast (vice versa for the left). Thumb in front of the upper lip, fingers behind the lower lip (P21).", why="Think of how you hold a burger: your hand shape follows the mouth.", err="Fingers not parallel to the baby's lips; baby in a diagonal position."),
+   dict(t="Compress evenly: U not V", pts=[22,23,24], think="Why must the mother compress the breast, and why is a V-shaped hold a mistake?", answer="Compression at the moment of wide opening lets the lower areola, under the lower lip, go into the mouth (P22). Compress evenly with thumb and fingers; do not hold only the nipple (P23). A V-shape hold produces nipple-only attachment and little milk (P24).", why="Compression changes the breast into a shape that fits the mouth.", err="V-hold; pushing the breast toward the baby instead of bringing the baby to the breast."),
+  ],
+  take=["Right breast: right thumb 9, other fingertips 3, U dips at 6. Equal distance, three fingers from the nipple.","Fingers parallel to the baby's lips; baby horizontal: upper lip 9, lower lip 3.","Compress evenly at the moment the mouth opens wide. Avoid V-hold and nipple-only holding."],
+  mcq=[
+   dict(q="For the right breast, where does the tip of the mother's right thumb sit on the breast clock?", o=["12 o'clock","3 o'clock","6 o'clock","9 o'clock"], a=3, why="P18: thumb tip at 9, the other fingertips at 3, and the dip of the U at 6 for the right breast.", ref="P18"),
+   dict(q="What distance should separate the nipple from the thumb and fingers?", o=["Touching the nipple","One finger","Three fingers","Six fingers"], a=2, why="P20: a distance of 3 fingers between the nipple and thumb and between the nipple and other fingers. (Hand expression uses a different 2-finger distance, P45.)", ref="P20"),
+   dict(q="Why is the V-shaped hold discouraged?", o=["It looks untidy.","The baby attaches only to the nipple and gets very little milk.","It stops the baby from burping.","It tires the baby's arm."], a=1, why="P24 states this directly.", ref="P24"),
+   dict(q="The mother's fingers are at an angle across the baby's lips and are touching the areola edge. Which two corrections apply?", o=["Place fingers parallel to the baby's lips and three fingers from the nipple.","Move her thumb to the baby's cheek.","Hold the nipple between two fingers.","Lean forward more."], a=0, why="P20-P21 and the assessment form: fingers should be parallel to the lips and about three fingers' distance away; too close or too far is unfavourable.", ref="P20, P21"),
+   dict(q="When should the mother compress the breast to help the baby take the lower areola?", o=["Before the baby shows hunger cues","Only after the baby has already latched shallowly","When the baby opens its mouth widely, as she brings the baby to the breast","Continuously for the whole feed"], a=2, why="P22: bring the baby to the breast and compress when the mouth opens widely; correct timing is part of ensuring deep attachment.", ref="P22"),
+  ],
+  case=dict(id="c3", title="The V-grip", stages=[
+   dict(s="Sunita holds her breast in a V between index and middle fingers right up against the nipple while pushing it toward the baby. The baby latches, cheeks dimple, and Sunita says 'it hurts every time'. What are the two main errors?", o=["V-hold close to the nipple, and pushing the breast to the baby","Baby is too hungry","Nipple is too small","Baby's clothes are too thin"], a=0, f=["Correct: V-hold (P24), fingers too close (P20), and pushing the breast instead of bringing the baby (assessment form).","Not supported by the source.","Not supported by the source.","Not supported by the source."]),
+   dict(s="You teach her the U-hold on the right breast. After her right hand is shaped, where do you ask her to check each part?", o=["Thumb at 9, fingertips at 3, dip at 6, equal three-finger distance","Thumb at 12, fingers at 6","Thumb at 3, fingers at 9","Thumb on the nipple, fingers on the areola edge"], a=0, f=["Correct (P18-P20).","Not correct for the right breast.","Reversed positions for the right breast.","Too close to the nipple (P20)."]),
+  ], end="Teaching point: fingers shape the breast for the mouth (P17-P24).")),
+
+ dict(id="latch", n=4, icon="👄", title="Attach & Check the Latch", sub="Wide mouth, deep latch, three checks",
+  pts=[25,32], mins=30, level="Apply → Evaluate",
+  hook="A baby is brought to the breast with a half-open mouth. The mother is in a hurry. The nipple goes in and the baby sucks, but only on the nipple. The most valuable skill in this module is patience for two or three minutes.",
+  outcomes=["Describe how to stimulate a wide mouth (nipple on upper lip, wait for 120-160 degrees).","Identify a deep attachment: lip positions, chin and lip embedding, lower areola inside.","Perform and teach the three latch checks and decide when to release the breast."],
+  units=[
+   dict(t="Open wide, then attach", pts=[25,26], think="The baby's mouth is only partly open. The mother is impatient. What is the right action and how long might it take?", answer="Brush the nipple lightly on the upper lip (P25) and WAIT until the mouth opens 120-160 degrees; this can take 2-3 minutes. Hurrying with a partly open mouth gives nipple-only attachment (P26). If the mouth does not open widely for more than 10 minutes, the baby is not hungry.", why="Wide gape is the trigger for compression and attachment.", err="Pushing the nipple into a mouth that is open less than 120 degrees."),
+   dict(t="What a deep latch looks like", pts=[27,28,29], think="Describe the baby's lips and chin in a deep latch.", answer="Upper lip a little above the nipple; lower lip at the areola border (or beyond it for a small areola) (P27); lower lip curled outward (P28); lips and chin completely embedded in the breast (P29).", why="These cues show the mouth is full of breast tissue rather than nipple.", err="Lips visible and not embedded; lower lip tucked in."),
+   dict(t="The three checks and releasing the breast", pts=[30,31,32], think="List the three things the mother must check, and what to do if a heavy breast slips after she lets go.", answer="Check (1) lower areola inside the mouth, (2) lower lip curled outward (both by lightly pressing the breast up near the lower lip, P30) and (3) mouth open at least 120 degrees (P31). She then moves her breast hand to the baby's back (not the head hand). For heavy breasts: support with the elbow, or keep holding and prop the hand on 2-3 pillows (P32).", why="Teaching the mother to check makes the skill portable to every feed.", err="Releasing the head hand; letting a heavy breast drag the areola out."),
+  ],
+  take=["Brush upper lip; wait for 120-160 degrees (2-3 minutes). No gape in >10 min = not hungry.","Deep latch: upper lip above nipple, lower lip at areola border, curled out, lips/chin embedded.","Three checks: lower areola in, lower lip out, mouth ≥120 degrees. Support heavy breasts with elbow or pillows."],
+  mcq=[
+   dict(q="What is the recommended mouth opening before the mother puts the lower areola into the mouth?", o=["60-90 degrees","90-100 degrees","120-160 degrees","Any opening is fine"], a=2, why="P26 specifies 120-160 degrees; hurrying leads to nipple-only attachment.", ref="P26"),
+   dict(q="The baby has not opened wide after 12 minutes of gentle stimulation. What does the source say this suggests?", o=["The baby is not hungry.","The mother is doing it wrong.","The baby needs formula.","The baby is too cold."], a=0, why="P26: if the baby does not open its mouth widely for more than 10 minutes, the baby is not hungry. Reassess cues (P1).", ref="P26"),
+   dict(q="Which is NOT one of the three latch checks?", o=["Lower areola entirely inside the mouth","Lower lip curled outward","Mouth open at least 120 degrees","The baby has been feeding for 20 minutes"], a=3, why="P30-P31 list three checks: lower areola in mouth, lower lip curled outward, mouth open at least 120 degrees.", ref="P30, P31"),
+   dict(q="In a deep latch on a mother with a small areola, where does the baby's lower lip sit?", o=["Well below the areola","Beyond the areola border, on the breast","On the nipple","Inside the mouth"], a=1, why="P27: if the areola is small, the lower lip will be beyond the areola border.", ref="P27"),
+   dict(q="After confirming a deep latch, a mother with large breasts releases her breast and the areola slides out. Best advice?", o=["Never release the breast; hold it forever","Support the breast with her elbow or hold the breast and rest that hand on 2-3 pillows","Move the head-supporting hand to the breast","Switch to feeding lying down only"], a=1, why="P32 gives elbow support or pillows. She should not move the hand that holds the baby's head.", ref="P32"),
+  ],
+  case=dict(id="c4", title="Hurried latch", stages=[
+   dict(s="Rekha rubs the nipple on the baby's upper lip, the mouth opens a little, and she pushes the nipple in. Cheeks dimple and she feels a pinch. What went wrong?", o=["She attached before the mouth was open 120-160 degrees","The baby is too young","Her nipples are too sensitive","She waited too long"], a=0, f=["Correct (P26). The result was nipple-only attachment (P41).","Not supported by the source.","Not supported by the source.","The source advises waiting 2-3 minutes for a wide mouth."]),
+   dict(s="She detaches (finger in the corner of the mouth) and tries again, waiting. The baby opens wide. Which three checks do you teach her to confirm the latch?", o=["Lower areola inside; lower lip curled out; mouth ≥120 degrees","Baby's hands open; baby's eyes closed; baby not crying","Mother not in pain; baby quiet; short feed","Breast soft; baby sleeping; nipple clean"], a=0, f=["Correct (P30-P31).","Not the three checks.","Not the three checks.","Not the three checks."]),
+  ], end="Teaching point: patience until the mouth is wide, then check the three points (P25-P31).")),
+
+ dict(id="feed", n=5, icon="🍼", title="Feeding Well", sub="Completing a breast, burping, troubleshooting",
+  pts=[33,41], mins=30, level="Analyse → Evaluate",
+  hook="A mother switches breasts after four minutes 'so both sides are even'. Her baby is hungry again in thirty minutes. What did the baby miss?",
+  outcomes=["Explain why a breast should be completed before switching, and how to check by hand expression.","Distinguish foremilk from hindmilk and say why both matter.","Apply burping, waking, detaching, and neck-extension techniques.","Interpret cheeks, jaw movement and swallowing as evidence of effective feeding."],
+  units=[
+   dict(t="One breast completely, then the other", pts=[33,34,35], think="How can a mother know that one breast has been completed?", answer="Hand-express from that breast. Thin watery milk, or a good flow of thick milk, means the baby has not finished: continue on the same breast (P34). Offer the second breast only after finishing the first (P33, P35).", why="Foremilk (protein-rich, thin) comes first; hindmilk (fat-rich, thick) comes later; both are needed for growth (P35).", err="Offering both breasts for under five minutes without emptying either."),
+   dict(t="Burp, wake and detach", pts=[36,37,38], think="Three problems: the baby needs burping before the second breast, falls asleep at the breast, or is on the nipple only. What technique for each?", answer="Burp: sit on her lap, cup the jaw, hand on back, bend the torso slightly forward; burps in 2-3 min (P36). Sleepy: caress the back, tickle the feet, or sit in burping position (P37). Nipple-only or sleeping: put a clean little finger in the baby's mouth to break the hold (P38).", why="Detaching with a finger prevents nipple trauma.", err="Pulling the baby off the breast without a finger."),
+   dict(t="Reading the feed", pts=[39,40,41], think="What do round cheeks versus dimples tell you?", answer="Round, full cheeks, no dimple, slow distinct jaw drop with swallowing (P40) mean good feeding. Dimples mean nipple-only feeding, with more upper than lower areola in the mouth or lips and chin not embedded (P41). If the nose is pressed in, gently extend the neck so the chin presses in and the forehead moves away (P39).", why="You can assess a feed in seconds just by watching cheeks and the jaw.", err="Ignoring clicking, rapid swallowing and dimples."),
+  ],
+  take=["Finish a breast (check by expression) then burp, then offer the second.","Sleepy baby: back rub, tickle feet, burping position. Nipple-only or asleep: little finger to detach.","Good: round cheeks, slow jaw drops. Poor: dimples, fast swallowing sounds. Nose blocked: extend the neck."],
+  mcq=[
+   dict(q="Thin watery milk comes out when the mother hand-expresses from the breast the baby just used. What should she do?", o=["Switch breasts at once.","Continue feeding from the same breast.","Stop feeding.","Give the baby water."], a=1, why="P34: thin watery milk or a good flow of thick milk means the breast is not completed.", ref="P34"),
+   dict(q="Why are both foremilk and hindmilk important?", o=["Foremilk is protein-rich, hindmilk is fat-rich; both are needed for growth.","Only hindmilk matters.","Foremilk causes colic.","They are identical."], a=0, why="P35.", ref="P35"),
+   dict(q="Which is a sign of effective feeding?", o=["Cheek dimples","Rapid fast swallowing sounds","Round, full cheeks and slow, distinct jaw drops","Lips visible and tucked in"], a=2, why="P40 lists round full cheeks, no dimples, no fast swallowing sounds and slow jaw drops. P41 gives dimples as a warning.", ref="P40, P41"),
+   dict(q="The baby falls asleep after a minute on the breast. What is a source-advised first step?", o=["Pull the baby off quickly","Caress the back or tickle the feet","Leave him asleep","Give the baby a bottle"], a=1, why="P37 lists back caressing, foot tickling or burping position; P38 gives the finger technique for detaching.", ref="P37, P38"),
+   dict(q="The baby's nose is pressed hard into the breast. What do you do?", o=["Press the breast away with a finger","Gently extend the baby's neck so the chin is pressed further and the forehead pulled away","Turn the baby face-up","End the feed"], a=1, why="P39.", ref="P39"),
+  ],
+  case=dict(id="c5", title="The sleepy switcher", stages=[
+   dict(s="Priya's baby feeds 3 minutes on the left breast and sleeps. She switches him to the right breast, he sleeps again, and he is hungry 30 minutes later. What should you ask her first?", o=["How long does he feed, and does she hand-express after to check if the first breast is finished?","Is her milk thin?","Does she use a pillow?","How old is her husband?"], a=0, f=["Correct (P33-P35): check completeness of the first breast and the type of milk.","Not the source's focus.","Not relevant to the problem.","Irrelevant."]),
+   dict(s="Hand expression shows thin watery milk from the first breast. What advice?", o=["Wake him gently (back caress or feet), burp, and continue on the same breast until thick milk.","Switch to the second breast immediately.","Stop for the day.","Pump both."], a=0, f=["Correct (P34, P36, P37).","Switching early leaves hindmilk behind (P35).","Not supported.","Not what the source advises."]),
+  ], end="Teaching point: finish a breast and verify (P33-P38).")),
+
+ dict(id="rhythm", n=6, icon="🌙", title="Rhythm, Growth & Expression", sub="How often, how long, growth spurts, and hand expression",
+  pts=[42,45], mins=20, level="Apply → Create",
+  hook="A mother of a 6-week-old tells you, 'He's feeding all the time, my milk must be going.' What do you say?",
+  outcomes=["State the feeding frequency (10-12/24 h, ≥3-4 at night) and exclusive-breastfeeding duration.","Recognise growth-spurt ages and respond with more frequent, longer feeds.","Teach hand expression with the correct finger geometry and technique."],
+  units=[
+   dict(t="Frequency and duration", pts=[42,43], think="How many feeds per 24 hours, and how long should a baby be exclusively breastfed?", answer="10-12 feeds in 24 hours with at least 3-4 at night (P42). Exclusive breastfeeding for 6 months, then continue alongside complementary feeding until 2 years (P43).", why="Frequent feeds including at night sustain supply and growth.", err="Fewer than 10 feeds or fewer than 3 at night."),
+   dict(t="Growth spurts", pts=[44], think="At which ages does the baby grow very fast and what does the mother do?", answer="2 weeks, 6 weeks and 3 months. Feed more often and longer, and use the correct technique (P44).", why="Reassure the mother that increased demand at these ages is expected.", err="Assuming low supply and stopping or supplementing."),
+   dict(t="Hand expression", pts=[45], think="What is the geometry of the hand for expressing milk, and what are the steps?", answer="Thumb, nipple and finger in a straight line, nipple midway between thumb and forefinger/middle finger, 2 fingers' distance. Press towards the chest, compress, release (Press-Compress-Release). Check whether the milk is thin or thick (P45).", why="Note the distance is 2 fingers for expression versus 3 fingers for the U-hold (P20).", err="Squeezing the nipple; moving the hand while pressing."),
+  ],
+  take=["10-12 feeds/24 h; ≥3-4 at night.","Exclusive for 6 months; continue with complementary foods to 2 years.","Growth spurts at 2 wk, 6 wk, 3 mo: feed more, longer.","Hand expression: straight line; press toward chest, compress, release."],
+  mcq=[
+   dict(q="Minimum night feeds in 24 hours?", o=["1-2","3-4","5-6","None needed"], a=1, why="P42.", ref="P42"),
+   dict(q="Exclusive breastfeeding is recommended for how long?", o=["3 months","4 months","6 months","12 months"], a=2, why="P43; breastfeeding continues alongside complementary food until 2 years.", ref="P43"),
+   dict(q="A mother of a 6-week-old says the baby seems to want more feeds. Best counselling?", o=["Introduce formula","Explain that 6 weeks is a growth-spurt age and encourage more frequent, longer feeds with correct technique","Reduce night feeds","Give water between feeds"], a=1, why="P44.", ref="P44"),
+   dict(q="Which finger geometry is used for hand expression?", o=["Thumb on the nipple, fingers on the areola","Thumb, nipple and finger in a straight line, two fingers' distance from the nipple","Three fingers on the baby's lips","Any comfortable position"], a=1, why="P45; contrast with the U-hold's three-finger distance (P20).", ref="P45"),
+   dict(q="Which sequence describes the hand-expression technique?", o=["Pull, twist, squeeze","Press towards the chest, compress, release","Rub, shake, press","Tap, lift, squeeze"], a=1, why="P45 and the assessment form: Press, Compress & Release.", ref="P45"),
+  ],
+  case=dict(id="c6", title="Is my milk going?", stages=[
+   dict(s="Kavya says her 6-week-old is feeding every hour and she plans to start formula. What do you do first?", o=["Check the technique and frequency; explain growth spurts at 2 wk, 6 wk, 3 months","Agree and start formula","Tell her to feed twice a day","Take the baby away"], a=0, f=["Correct (P42, P44).","The source advises more frequent, longer feeds.","Contradicts P42.","Inappropriate."]),
+   dict(s="You teach her hand expression. Which is correct?", o=["Thumb, nipple, finger in a line; press toward chest; compress; release","Squeeze the nipple hard","Pull the nipple","Press the nipple between thumb and index only"], a=0, f=["Correct (P45).","Incorrect.","Incorrect.","Incorrect."]),
+  ], end="Teaching point: frequency and growth spurts, plus hand expression (P42-P45).")),
+]
+
+# ---------------------------------------------------------------- Capstone: observation lab (S2/S3)
+OBS_ITEMS = {
+ "good": ["Mother relaxed and comfortable","Baby's body close, facing breast","Baby's head and body straight","Baby's chin touching breast","Baby's bottom supported (newborn)",
+          "Baby reaches for breast if hungry","Baby calm and alert at breast","Baby stays attached","Secure, confident hold","Face-to-face attention from mother",
+          "Breasts soft after feed","Skin appears healthy","Mouth wide open","Lower lip turned outwards","Tongue cupped around breast","Cheeks round","More areola above baby's mouth","Slow deep sucks with pauses","Can see or hear swallowing"],
+ "bad": ["Shoulders tense, leans over baby","Baby's body away from mother's","Baby's neck twisted","Baby's chin not touching breast","Only shoulder or head supported",
+         "No response to breast","Baby restless or crying","Baby slips off breast","Nervous or limp hold","No mother/baby eye contact","Shaking or poking baby",
+         "Breasts engorged","Nipples flat or inverted","Fissures or redness","Mouth not wide open","Lower lip turned in","Baby's tongue not seen","Cheeks tense or pulled in","More areola below baby's mouth","Rapid sucks only","Can hear smacking or clicking"],
+}
+
+# Observation scenarios: each item flagged as present (True) in the scenario; learner classifies
+OBS = [
+ dict(id="o1", t="Observation 1: Lakshmi and Arjun, day 3",
+  scene="Lakshmi is sitting on the bed with her back against the wall. She holds Arjun's head with her left thumb and fingers behind his ears and his body is supported. His ear, shoulder and hip form a straight line and his stomach touches her chest. She brushed her nipple on his upper lip, waited, and put the lower areola in when his mouth opened wide. His lips are embedded, the lower lip is curled out and cheeks are round. She can see his jaw drop slowly.",
+  items=[("Mother relaxed and comfortable","good"),("Baby's head and body straight","good"),("Baby's chin touching breast","good"),("Lower lip turned outwards","good"),("Cheeks round","good"),("Slow deep sucks with pauses","good"),("Shoulders tense, leans over baby","bad"),("Can hear smacking or clicking","bad")],
+  present=[True,True,True,True,True,True,False,False],
+  fb="All favourable signs are present: relaxed seated mother, aligned baby, outward lower lip, round cheeks and slow deep sucks. No unfavourable signs were described."),
+ dict(id="o2", t="Observation 2: Divya and Ishan, day 5",
+  scene="Divya leans forward over Ishan, who lies across her lap with his neck turned toward her face. Only his head and shoulders are supported. She holds her breast in a V with fingers close to the nipple and pushes it into his half-open mouth. His cheeks dimple and a clicking sound can be heard. His lower lip is tucked in. She says it hurts.",
+  items=[("Shoulders tense, leans over baby","bad"),("Baby's neck twisted","bad"),("Only shoulder or head supported","bad"),("Mouth not wide open","bad"),("Lower lip turned in","bad"),("Cheeks tense or pulled in","bad"),("Can hear smacking or clicking","bad"),("Baby's chin touching breast","good")],
+  present=[True,True,True,True,True,True,True,False],
+  fb="Seven unfavourable signs are present and none of the favourable ones. Counsel: reposition (P8-P16), U-hold (P17-P24), wait for wide gape (P25-P26), check latch (P30-P31)."),
+]
+
+# ---------------------------------------------------------------- Assessment form (S2) condensed to a coaching checklist
+ASSESS = [
+ dict(sec="Mother's preparation", good=["Knows early hunger cues","Washes hands with soap and water","Drinks one glass of water before breastfeeding","Relaxed, sitting straight with back support","Wears loose clothes","Removes baby's blanket, cap, mittens and socks and sits baby up briefly to wake"], bad=["Feeds when baby cries","Does not wash hands","Does not take water before feeding","Shoulders tense, no back support","Wears tight clothes","Does not remove blanket/cap/mittens/socks; baby sleepy"]),
+ dict(sec="Positioning the baby", good=["Head, back, hips and legs fully supported","Ears, shoulder joint and hip joint in one line","Thumb behind one ear, fingers behind the other","Face toward breast; chest touching mother's chest (horizontal)","Upper lip at 9 and lower lip at 3 for right breast","Nare in line with nipple, chin forward (obtuse neck angle)"], bad=["Only shoulders/head supported","Ears, shoulder and hip not in a line; twisted body or neck","Pressure on back of head, movement restricted","Face toward mother's face; diagonal position","Lips not vertical on the areola","Nose higher than nipple or tip in line; neck bent forward"]),
+ dict(sec="Contouring the areola", good=["Fingers parallel to baby's lips, 3 fingers from nipple","Compresses breast adequately","Brings baby to breast"], bad=["Fingers not parallel; too close or too far","Not compressing adequately","Pushing breast toward baby"]),
+ dict(sec="Attaching deeply", good=["Brushes nipple on upper lip to stimulate 120-160 degree opening","Lower lip at areola border; upper lip at nipple border","Checks latch by pressing near lower lip","Lips and chin embedded","Only upper areola visible","Cheeks round, no dimple","Finger in the mouth to delatch"], bad=["Hurriedly pushes nipple into mouth open <120 degrees","Lower lip below nipple; upper lip at border of nipple or areola","Does not check the latch manually","Lips and chin visible","Upper areola not visible in big areola","Cheeks tense or hollow, dimple","Pulls baby off without finger"]),
+ dict(sec="Important counselling points", good=["Brings hand around the baby after checking latch, supports head","Feeds 10-12 times in 24 hours; 3-4 at night","Offers both breasts; finishes one first","Checks by expression before offering second","Knows Press, Compress & Release","Burps baby sitting"], bad=["Keeps holding breast in V; not supporting head","Fewer than 10 feeds; fewer than 3 at night","Only one breast","Offers both breasts for <5 minutes","Offers other breast without checking","Does not know the technique","Burps on the shoulder"]),
+]
+
+# ---------------------------------------------------------------- Sequencing activity
+SEQ = [
+ "Recognise early hunger cues","Wash hands and drink boiled, cooled water","Sit with back and feet supported; shoulders relaxed","Unwrap the baby; hold with the opposite hand, wrist between the shoulder blades","Align ear-shoulder-hip; stomach to chest; nare at nipple; extend neck","Make the U-hold (9, 3, 6 o'clock) three fingers from the nipple","Brush the nipple on the upper lip and wait for 120-160 degrees","Compress and attach to the lower areola; check the three points","Feed one breast completely; check by expression; burp; offer the other breast",
+]
+
+# ---------------------------------------------------------------- Flashcards
+CARDS = [
+ ("Name five early hunger cues.","Moving head/body side to side, yawning, opening mouth, salivating, hand to mouth (P1)."),
+ ("Why avoid waiting for crying?","Crying is late: baby attaches poorly and mother becomes anxious (P1)."),
+ ("What goes into boiled cooled water step?","The mother drinks boiled and cooled clean water before feeding (P3)."),
+ ("What should the mother remove from her breast area?","Blouse and bra covering the breast; pressure can cause a lump (P6)."),
+ ("Winter clothing rule?","Warm but not thick; thick cloth becomes a barrier. Cover after deep attachment (P7)."),
+ ("Which hand holds the head for the right breast?","The left hand (P8)."),
+ ("Where do the baby's legs go?","Under the armpit of the hand holding the head; hip joint in the elbow if possible (P9)."),
+ ("Bend down or bring baby up?","Bring the baby up to the breast (P10)."),
+ ("Thumb and fingers on the head?","Thumb behind one ear, fingers behind the other (P11)."),
+ ("Wrist position?","Between the baby's shoulder blades; support the whole body (P12)."),
+ ("Straight line of three landmarks?","Ear, shoulder, hip (P13)."),
+ ("Stomach position?","Gently pressed against mother's chest (P14)."),
+ ("Nostrils line up with what?","The nipple; baby faces breast, not mother's face (P15)."),
+ ("Neck position?","Extended back like drinking water; chin near breast (P16)."),
+ ("Which hold shapes the breast?","U-shape from below with same-side hand (P17)."),
+ ("Clock positions, right breast?","Thumb tip 9, fingertips 3, dip of U at 6 (P18)."),
+ ("Distance of thumb and fingers from nipple?","Equal; three fingers (P19, P20)."),
+ ("Baby's lip positions on the clock?","Upper lip 9, lower lip 3 on right breast (P21)."),
+ ("Fingers relative to baby's lips?","Parallel (P21)."),
+ ("What is the areola?","Dark area around the nipple; the lower part must enter the mouth (P22)."),
+ ("Why not V-shape hold?","Nipple-only attachment and little milk (P24)."),
+ ("How to open the baby's mouth?","Lightly brush the nipple on the upper lip (P25)."),
+ ("Mouth opening before attaching?","120-160 degrees; wait 2-3 minutes (P26)."),
+ ("Not opening for >10 minutes?","Baby is not hungry (P26)."),
+ ("Upper and lower lip positions in deep latch?","Upper lip a little above the nipple; lower lip at the areola border (beyond it if the areola is small) (P27)."),
+ ("Lower lip shape?","Curled outward (P28)."),
+ ("Lips and chin?","Completely embedded in the breast (P29)."),
+ ("How to check the latch?","Lightly press breast up near lower lip: lower areola inside? Lower lip curled out? (P30)"),
+ ("Three essential latch checks?","Lower areola in, lower lip out, mouth ≥120 degrees (P30, P31)."),
+ ("After deep latch, what does the breast hand do?","Moves to the baby's back; head hand stays (P32)."),
+ ("Heavy breast slides out?","Elbow support, or hold and prop the hand on 2-3 pillows (P32)."),
+ ("Breast switching rule?","Finish one breast completely first (P33)."),
+ ("How to check a breast is finished?","Hand-express: thin watery or good flow of thick milk = continue (P34)."),
+ ("Foremilk vs hindmilk?","Foremilk thin and protein-rich; hindmilk thick and fat-rich; both needed (P35)."),
+ ("How to burp the baby?","Sit on lap, cup jaw, hand on back, lean torso slightly forward; 2-3 minutes (P36)."),
+ ("Sleepy baby at breast?","Caress back, tickle feet, burping position (P37)."),
+ ("How to detach safely?","Clean little finger in the mouth (P38)."),
+ ("Nose pressed into breast?","Gently extend the neck so chin presses in and forehead moves away (P39)."),
+ ("Signs of correct breastfeeding?","Round full cheeks, no dimples, no fast swallowing sounds, slow jaw drops (P40)."),
+ ("Dimples mean?","Nipple-only feeding; more upper areola; lips and chin not embedded (P41)."),
+ ("Feeds per 24 hours?","10-12, with at least 3-4 at night (P42)."),
+ ("Exclusive breastfeeding?","6 months; then complementary foods plus breastfeeding to 2 years (P43)."),
+ ("Growth-spurt ages?","2 weeks, 6 weeks, 3 months: feed more often and longer (P44)."),
+ ("Hand expression geometry?","Thumb, nipple and finger in a line; nipple in the middle; 2 fingers' distance (P45)."),
+ ("Hand expression steps?","Press toward chest, compress, release (P45)."),
+ ("U-hold distance vs expression distance?","U-hold: 3 fingers (P20). Expression: 2 fingers (P45)."),
+]
+
+PRE_IDS = ["ready:1","ready:2","position:1","position:3","hold:2","hold:3","latch:1","latch:3","feed:2","rhythm:1"]
+
