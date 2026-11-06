@@ -1,4 +1,4 @@
-﻿(function(){
+(function(){
 'use strict';
 const C = window.COURSE;
 const $ = (s,r=document)=>r.querySelector(s);
@@ -7,13 +7,17 @@ const esc = s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt
 const KEY='vikkypaedia-bf-v1';
 let S;
 try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
-S=Object.assign({name:'',path:'',goal:'',units:{},quiz:{},cases:{},obs:{},tools:{},pre:null,post:null,cards:{},notes:{},missed:{},conf:{sureRight:0,sureWrong:0,unsureRight:0,unsureWrong:0,guessRight:0,guessWrong:0},theme:'',think:{},spot:{},seq:null},S);
+S=Object.assign({name:'',path:'',goal:'',units:{},quiz:{},cases:{},obs:{},tools:{},pre:null,post:null,cards:{},notes:{},missed:{},conf:{sureRight:0,sureWrong:0,unsureRight:0,unsureWrong:0,guessRight:0,guessWrong:0},theme:'',think:{},spot:{},seq:null,last:'',reflect:{}},S);
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const toast=m=>{const t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)};
 const shuffle=(a,seed)=>{a=a.slice();let r=Math.random;for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const mod=id=>C.modules.find(m=>m.id===id);
 const ptRange=(m)=>{const a=[];for(let i=m.pts[0];i<=m.pts[1];i++)a.push(i);return a};
 const pct=(a,b)=>b?Math.round(100*a/b):0;
+/* point -> teaching unit, so every "P26" reference becomes a remediation link */
+const P2U={};C.modules.forEach(m=>m.units.forEach((u,k)=>u.pts.forEach(n=>{P2U[n]={h:`#/m/${m.id}/u/${k}`,m:m.id}})));
+const refLinks=ref=>esc(ref).replace(/P(\d+)/g,(s,a)=>P2U[a]?`<a href="${P2U[a].h}" title="Review the unit that teaches point ${a}">${s}</a>`:s);
+const modOfRef=ref=>{const x=String(ref||'').match(/P(\d+)/);return x&&P2U[x[1]]?P2U[x[1]].m:null};
 
 /* ---------- progress ---------- */
 function modProg(m){
@@ -65,7 +69,7 @@ const routes=[];
 const route=(re,fn)=>routes.push([re,fn]);
 function go(){
   const h=(location.hash||'#/home').slice(1);
-  for(const [re,fn] of routes){const m=h.match(re);if(m){renderNav();fn(...m.slice(1));const mn=$('#main');mn.focus({preventScroll:true});window.scrollTo(0,0);return}}
+  for(const [re,fn] of routes){const m=h.match(re);if(m){renderNav();fn(...m.slice(1));if(/^\/(m|quiz|case)\//.test(h)){S.last='#'+h;save()}const mn=$('#main');mn.focus({preventScroll:true});window.scrollTo(0,0);return}}
   location.hash='#/home';
 }
 window.addEventListener('hashchange',go);
@@ -82,10 +86,10 @@ route(/^\/home$/,()=>{
     <div class="eyebrow">Self-directed course · about 3 hours</div>
     <h1>Effective Counselling, Effective Breastfeeding</h1>
     <p>Learn to see, teach and correct the cross-cradle hold, the U-hold and the deep latch, using the 45 counselling points, a latch-assessment form and an observation lab. Learn at your own pace and your progress is saved on this device.</p>
-    <div class="row"><a class="btn alt" href="#/${S.path?'m/'+C.modules[0].id:'pre'}">${ov?'Continue learning':'Begin with the pre-test'}</a><a class="btn ghost" href="#/map">Browse the 45 points</a></div>
-    <p style="margin-top:14px"><span class="pill">6 modules</span><span class="pill">30 practice questions</span><span class="pill">6 cases</span><span class="pill">46 flashcards</span><span class="pill">4 simulators</span></p>
+    <div class="row"><a class="btn alt" href="${S.last||('#/'+(S.pre?'m/'+C.modules[0].id:'pre'))}">${S.last?'Continue where you left off':ov?'Continue learning':'Begin with the pre-test'}</a><a class="btn ghost" href="#/map">Browse the 45 points</a></div>
+    <p style="margin-top:14px"><span class="pill">6 modules</span><span class="pill">30 practice questions</span><span class="pill">6 cases</span><span class="pill">${C.spot.length} image challenges</span><span class="pill">${C.cards.length} flashcards</span><span class="pill">4 simulators</span></p>
    </div>
-   <img src="img/cover.jpg" alt="Illustration of a mother feeding her baby in the cross-cradle hold">
+   <img src="img/cover_hero.jpg" alt="Illustration of a seated mother breastfeeding her baby in the cross-cradle hold" class="hero-img">
   </section>
 
   <div class="card"><h2 style="margin-top:0">Who is this for?</h2><p>Nurses, doctors, community health workers, lactation counsellors and students who counsel mothers on breastfeeding technique. Mothers can use it too; the language stays plain.</p></div>
@@ -173,17 +177,18 @@ route(/^\/m\/(\w+)(?:\/u\/(\d+))?$/,(id,k)=>{
 
 /* ---------- QUIZ ENGINE ---------- */
 function quizEngine(opts){
-  // opts: {title, items:[{id,q,o,a,why,ref}], mastery, onFinish(score,total,wrongIds), back, intro}
-  let items=shuffle(opts.items).map(it=>{const idx=shuffle(it.o.map((_,i)=>i));return Object.assign({},it,{o:idx.map(i=>it.o[i]),a:idx.indexOf(it.a)})});
-  let i=0,score=0,conf='unsure',wrong=[],locked=false;
+  // opts: {title, items:[{id,q,o,a,why,ref,n}], mastery, onFinish(score,total,wrongIds,results), back}
+  // n = option-specific notes in original order; they are re-ordered with the shuffled options.
+  let items=shuffle(opts.items).map(it=>{const idx=shuffle(it.o.map((_,i)=>i));return Object.assign({},it,{o:idx.map(i=>it.o[i]),n:it.n?idx.map(i=>it.n[i]):null,a:idx.indexOf(it.a)})});
+  let i=0,score=0,conf='unsure',wrong=[],res=[],locked=false;
   const root=$('#main');
   const draw=()=>{
     if(i>=items.length)return finish();
     const it=items[i];locked=false;
     root.innerHTML=`<div class="crumbs">${esc(opts.title)} · Question ${i+1} of ${items.length}</div>
-    <div class="bar" style="margin:8px 0 18px"><i style="width:${pct(i,items.length)}%"></i></div>
+    <div class="bar" style="margin:8px 0 18px" role="progressbar" aria-valuenow="${i}" aria-valuemin="0" aria-valuemax="${items.length}" aria-label="Quiz progress"><i style="width:${pct(i,items.length)}%"></i></div>
     <div class="card"><h2 style="margin-top:0;font-size:1.25rem">${esc(it.q)}</h2>
-    <div class="crumbs">How sure are you?</div>
+    <div class="crumbs">How sure are you? (pick before answering)</div>
     <div class="seg" role="group" aria-label="Confidence">${['sure','unsure','guess'].map(c=>`<button data-c="${c}" class="${conf===c?'on':''}" aria-pressed="${conf===c}">${{sure:'Sure',unsure:'Not sure',guess:'Guessing'}[c]}</button>`).join('')}</div>
     <div role="group" aria-label="Answer options">${it.o.map((o,j)=>`<button class="opt" data-j="${j}">${String.fromCharCode(65+j)}. ${esc(o)}</button>`).join('')}</div>
     <div id="fb" aria-live="polite"></div></div>`;
@@ -192,25 +197,29 @@ function quizEngine(opts){
   };
   const pick=j=>{
     if(locked)return;locked=true;const it=items[i];const ok=j===it.a;
-    if(ok)score++;else{wrong.push(it.id);S.missed[it.id]=(S.missed[it.id]||0)+1}
-    const ck=({sure:'sure',unsure:'unsure',guess:'guess'})[conf]+(ok?'Right':'Wrong');S.conf[ck]=(S.conf[ck]||0)+1;
-    if(ok&&S.missed[it.id])S.missed[it.id]=Math.max(0,S.missed[it.id]-1);
+    res.push({id:it.id,ok,ref:it.ref,q:it.q});
+    if(ok){score++;if(S.missed[it.id])S.missed[it.id]=Math.max(0,S.missed[it.id]-1)}
+    else{wrong.push(it.id);S.missed[it.id]=(S.missed[it.id]||0)+1}
+    const ck=conf+(ok?'Right':'Wrong');S.conf[ck]=(S.conf[ck]||0)+1;
     save();
-    $$('.opt',root).forEach((b,x)=>{b.disabled=true;if(x===it.a)b.classList.add('ok');else if(x===j)b.classList.add('no')});
+    $$('.opt',root).forEach((b,x)=>{b.disabled=true;if(x===it.a){b.classList.add('ok');b.insertAdjacentHTML('beforeend',' <b>✓ best answer</b>')}else if(x===j){b.classList.add('no');b.insertAdjacentHTML('beforeend',' <b>✗ your choice</b>')}});
     let cal='';
-    if(conf==='sure'&&!ok)cal='<p><b>Calibration:</b> you were sure but wrong. This is the most valuable miss; revisit the cited point.</p>';
-    if(conf==='guess'&&ok)cal='<p><b>Calibration:</b> a lucky guess. Revisit the point so it sticks.</p>';
-    $('#fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'Correct.':'Not quite.'}</b> ${esc(it.why)}<p style="margin:.4em 0 0">Review: <b>${esc(it.ref||'')}</b></p>${cal}</div><div style="margin-top:14px"><button class="btn" id="nx">${i+1<items.length?'Next question →':'See results'}</button></div>`;
+    if(conf==='sure'&&!ok)cal='<p><b>Calibration:</b> you were sure but wrong. This is the most valuable kind of miss. Revisit the linked unit.</p>';
+    if(conf==='guess'&&ok)cal='<p><b>Calibration:</b> a lucky guess. It has been noted; revisit the point so it sticks.</p>';
+    const mine=(!ok&&it.n&&it.n[j])?`<p style="margin:.5em 0 0"><b>Why your choice is less appropriate:</b> ${refLinks(it.n[j])}</p>`:'';
+    $('#fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'Correct.':'Not quite.'}</b>${mine}<p style="margin:.5em 0 0"><b>Why the best answer is right:</b> ${refLinks(it.why)}</p><p style="margin:.4em 0 0">📖 Review: ${refLinks(it.ref||'')}</p>${cal}</div><div style="margin-top:14px"><button class="btn" id="nx">${i+1<items.length?'Next question →':'See results'}</button></div>`;
+    if(!ok||conf==='guess'){S.missed[it.id]=Math.max(S.missed[it.id]||0,1);save()}
     $('#nx').focus();$('#nx').onclick=()=>{i++;conf='unsure';draw()};
   };
   const finish=()=>{
     const sc=pct(score,items.length);const ok=sc>=(opts.mastery||80);
-    root.innerHTML=`<div class="crumbs">${esc(opts.title)} · Results</div><h1>${ok?'🎉 ':''}${score} / ${items.length} (${sc}%)</h1>
-    <div class="card">${!opts.mastery?'<p>Diagnostic only: this does not count toward completion.</p>':ok?`<p>Mastery reached (${opts.mastery}%+).</p>`:`<p>Mastery needs ${opts.mastery}%. You can retry as often as you like.</p>`}
-    ${wrong.length?`<p>Missed items are now in your <a href="#/review">Review queue</a>.</p>`:''}
+    const miss=res.filter(r=>!r.ok);
+    root.innerHTML=`<div class="crumbs">${esc(opts.title)} · Results</div><h1>${ok&&opts.mastery?'🎉 ':''}${score} / ${items.length} (${sc}%)</h1>
+    <div class="card">${!opts.mastery?'<p>Diagnostic or warm-up only: this does not count toward completion.</p>':ok?`<p>Mastery reached (${opts.mastery}%+).</p>`:`<p>Mastery needs ${opts.mastery}%. Revisit the units below, then retry as often as you like. Options are reshuffled each time.</p>`}
+    ${miss.length?`<h3>Your personal revision list</h3><ul>${miss.map(r=>`<li>${esc(r.q.length>90?r.q.slice(0,88)+'…':r.q)}: review ${refLinks(r.ref||'')}</li>`).join('')}</ul><p class="crumbs">These questions (and lucky guesses) are now in your <a href="#/review">Review queue</a> until you answer them correctly.</p>`:''}
     <div class="row"><button class="btn" id="again">Try again</button><a class="btn ghost" href="${opts.back||'#/home'}">Back</a></div></div>`;
     $('#again').onclick=()=>quizEngine(opts);
-    opts.onFinish&&opts.onFinish(sc,items.length,wrong);
+    opts.onFinish&&opts.onFinish(sc,items.length,wrong,res);
   };
   draw();
 }
@@ -224,15 +233,21 @@ route(/^\/quiz\/(\w+)$/,(id)=>{
 /* ---------- PRE / POST ---------- */
 route(/^\/pre$/,()=>{
   if(S.pre&&!S.preRetry){
-    setMain(`<h1>📝 Pre-test result</h1><div class="card"><div class="kpi">${S.pre.score}%</div><p>Taken ${new Date(S.pre.date).toLocaleDateString()}. Your lowest-scoring areas guide where to start.</p>
-    <ul>${C.modules.map(m=>`<li>${m.title}: <a href="#/m/${m.id}">open</a></li>`).join('')}</ul>
+    const mods=S.pre.mods||{};
+    const rows=C.modules.map(m=>{const r=mods[m.id]||[0,0];return {m,r,p:r[1]?pct(r[0],r[1]):null}});
+    const weakest=rows.filter(x=>x.p!==null).sort((a,b)=>a.p-b.p)[0];
+    setMain(`<h1>📝 Your starting point</h1><div class="card"><div class="kpi">${S.pre.score}%</div><p>Pre-test taken ${new Date(S.pre.date).toLocaleDateString()}. This is a diagnostic only. Use it to decide where to spend your time.</p>
+    <table class="tbl"><tr><th>Module</th><th>Pre-test</th><th>Suggestion</th></tr>${rows.map(x=>`<tr><td><a href="#/m/${x.m.id}">${x.m.icon} ${esc(x.m.title)}</a></td><td>${x.r[1]?`${x.r[0]}/${x.r[1]}`:'not sampled'}</td><td>${x.p===null?'Work through normally':x.p===100?'Strong: skim the units, then go straight to the quiz':x.p>=50?'Partly known: focus on the think-first questions':'Priority: work through every unit carefully'}</td></tr>`).join('')}</table>
+    ${weakest&&weakest.p<100?`<div class="callout warn" style="margin-top:12px"><b>Recommended focus:</b> <a href="#/m/${weakest.m.id}">${esc(weakest.m.title)}</a>. Modules build on each other, so Module 1 is still the natural start.</div>`:''}
+    <p class="crumbs">The pre-test samples 10 of the 30 practice questions, so you will meet these items again in module quizzes and the final assessment. Some improvement on repeat questions is expected and is not proof of learning gain.</p>
     <div class="row"><button class="btn ghost" id="rt">Retake</button><a class="btn" href="#/m/${C.modules[0].id}">Start module 1</a></div></div>`);
     $('#rt').onclick=()=>{S.preRetry=true;go()};return;
   }
-  setMain(`<h1>📝 Pre-test: where are you starting from?</h1><div class="card"><p>10 questions, no pressure. This is a diagnostic only, it does not count. A confident guess is still useful information.</p><div class="row"><button class="btn" id="st">Start</button></div></div>`);
+  setMain(`<h1>📝 Pre-test: where are you starting from?</h1><div class="card"><p>10 questions, no pressure. This is a diagnostic only and does not count. Rate your confidence honestly; it tells you what you think you know.</p><div class="row"><button class="btn" id="st">Start</button></div></div>`);
   $('#st').onclick=()=>{const pool=poolItems();const items=C.preIds.map(i=>pool.find(x=>x.id===i)).filter(Boolean);
-    quizEngine({title:'Pre-test',items,mastery:0,back:'#/home',onFinish:(sc)=>{S.pre={score:sc,date:Date.now()};S.preRetry=false;save();
-      $('#main').insertAdjacentHTML('beforeend',`<p><a class="btn alt" href="#/m/${C.modules[0].id}">Start learning →</a></p>`)}})};
+    quizEngine({title:'Pre-test',items,mastery:0,back:'#/pre',onFinish:(sc,t,w,res)=>{const mods={};res.forEach(r=>{const k=r.id.split(':')[0];mods[k]=mods[k]||[0,0];mods[k][1]++;if(r.ok)mods[k][0]++});
+      S.pre={score:sc,date:Date.now(),mods};S.preRetry=false;save();
+      $('#main').insertAdjacentHTML('beforeend',`<p><a class="btn alt" href="#/pre">See my personalised starting plan →</a></p>`)}})};
 });
 route(/^\/post$/,()=>{
   const ready=allMods();
@@ -256,7 +271,7 @@ route(/^\/case\/(\w+)$/,(id)=>{
     ${st.o.map((o,j)=>`<button class="opt" data-j="${j}">${esc(o)}</button>`).join('')}<div id="fb" aria-live="polite"></div></div>`);
     $$('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j;$$('.opt').forEach((x,y)=>{x.disabled=true;if(y===st.a)x.classList.add('ok');else if(y===j)x.classList.add('no')});
       if(j===st.a)score++;
-      $('#fb').innerHTML=`<div class="fb ${j===st.a?'ok':'no'}">${esc(st.f[j])}${j!==st.a?`<br><b>Better:</b> ${esc(st.f[st.a])}`:''}</div><div style="margin-top:12px"><button class="btn" id="nx">${i+1<cs.stages.length?'Next stage →':'Finish case'}</button></div>`;
+      $('#fb').innerHTML=`<div class="fb ${j===st.a?'ok':'no'}">${refLinks(st.f[j])}${j!==st.a?`<br><b>Better:</b> ${refLinks(st.f[st.a])}`:''}</div><div style="margin-top:12px"><button class="btn" id="nx">${i+1<cs.stages.length?'Next stage →':'Finish case'}</button></div>`;
       $('#nx').focus();$('#nx').onclick=()=>{i++;draw()}});
   };
   draw();
@@ -304,11 +319,13 @@ route(/^\/review$/,()=>{
 
 /* ---------- SPOT THE PROBLEM ---------- */
 route(/^\/spot$/,()=>{
-  setMain(`<h1>🔍 Spot the problem</h1><p>Look, interpret, then decide: <i>image → observation → interpretation → what to do</i>. Illustrations include the original correct/incorrect marks, so focus on explaining <b>why</b>.</p>
-  ${C.spot.map((s,i)=>`<div class="card" data-i="${i}"><div class="grid c2"><div><img src="img/${s.img}.jpg" alt="${esc(s.alt)}" style="max-width:100%;border-radius:12px;border:1px solid var(--line)"></div><div><b>${esc(s.q)}</b>${s.o.map((o,j)=>`<button class="opt" data-j="${j}">${esc(o)}</button>`).join('')}<div class="fbx" aria-live="polite"></div></div></div></div>`).join('')}`);
+  setMain(`<h1>🔍 Spot the problem</h1><p>Look, interpret, then decide: <i>image → observation → interpretation → what to do</i>. Challenge illustrations have point numbers and spoiler marks masked so you must use your own clinical judgement. Once you answer, the full original illustration and clinical reasoning are revealed.</p>
+  ${C.spot.map((s,i)=>`<div class="card" data-i="${i}"><div class="grid c2"><div><div style="position:relative"><img class="spot-img" src="img/${s.img}_clean.jpg" alt="${esc(s.alt)}" style="max-width:100%;border-radius:12px;border:1px solid var(--line);display:block"><button class="iconbtn" data-zoom="img/${s.img}.jpg" data-alt="${esc(s.alt)}" style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.65);color:#fff" aria-label="Enlarge image">🔍 Enlarge</button></div></div><div><b>${esc(s.q)}</b>${s.o.map((o,j)=>`<button class="opt" data-j="${j}">${String.fromCharCode(65+j)}. ${esc(o)}</button>`).join('')}<div class="fbx" aria-live="polite"></div></div></div></div>`).join('')}`);
   $$('.card[data-i]').forEach(card=>{const s=C.spot[+card.dataset.i];
     $$('.opt',card).forEach(b=>b.onclick=()=>{const j=+b.dataset.j;$$('.opt',card).forEach((x,y)=>{x.disabled=true;if(y===s.a)x.classList.add('ok');else if(y===j)x.classList.add('no')});
-      $('.fbx',card).innerHTML=`<div class="fb ${j===s.a?'ok':'no'}"><b>${j===s.a?'Correct.':'Not quite.'}</b> ${esc(s.why)} <b>(${esc(s.ref)})</b></div>`})});
+      const img=$('.spot-img',card);if(img)img.src=`img/${s.img}.jpg`;
+      S.spot[s.img]=j===s.a;save();
+      $('.fbx',card).innerHTML=`<div class="fb ${j===s.a?'ok':'no'}"><b>${j===s.a?'Correct.':'Not quite.'}</b> ${refLinks(s.why)}<p style="margin:.5em 0 0">📖 Review: ${refLinks(s.ref)}</p></div>`})});
 });
 
 /* ---------- OBSERVATION LAB ---------- */
@@ -316,9 +333,9 @@ route(/^\/lab$/,()=>{
   let tab=location.hash.includes('form')?'form':'obs';
   const draw=()=>{
     setMain(`<h1>🔬 Observation lab</h1><p>Practise what the B-R-E-A-S-T-Feed and breastfeeding assessment forms ask you to do: watch a feed, classify the signs, and plan counselling.</p>
-    <div class="tabs" role="tablist"><button class="${tab==='obs'?'on':''}" data-t="obs">Observe a feed</button><button class="${tab==='form'?'on':''}" data-t="form">Assessment checklist</button><button class="${tab==='seq'?'on':''}" data-t="seq">Order the steps</button></div><div id="tabc"></div>`);
+    <div class="tabs" role="tablist"><button class="${tab==='obs'?'on':''}" data-t="obs">Observe a feed</button><button class="${tab==='form'?'on':''}" data-t="form">Interactive checklist</button><button class="${tab==='seq'?'on':''}" data-t="seq">Order the steps</button><button class="${tab==='doc'?'on':''}" data-t="doc">Primary source forms</button></div><div id="tabc"></div>`);
     $$('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;draw()});
-    if(tab==='obs')labObs();else if(tab==='form')labForm();else labSeq();
+    if(tab==='obs')labObs();else if(tab==='form')labForm();else if(tab==='seq')labSeq();else labDoc();
   };
   const labObs=()=>{
     $('#tabc').innerHTML=C.obs.map((o,oi)=>`<div class="card" data-oi="${oi}"><div class="eyebrow">${esc(o.t)}</div><p>${esc(o.scene)}</p>
@@ -390,9 +407,19 @@ route(/^\/progress$/,()=>{
   <div class="card"><h2 style="margin-top:0">Confidence calibration</h2><p class="crumbs">Do you know what you know? ${tot} answers rated.</p>
   <table class="tbl"><tr><th></th><th>Right</th><th>Wrong</th></tr><tr><th>Sure</th><td>${c.sureRight}</td><td>${c.sureWrong}</td></tr><tr><th>Not sure</th><td>${c.unsureRight}</td><td>${c.unsureWrong}</td></tr><tr><th>Guessing</th><td>${c.guessRight}</td><td>${c.guessWrong}</td></tr></table>
   ${c.sureWrong>0?'<div class="callout err">"Sure but wrong" answers point to misconceptions. Check your Review queue.</div>':''}</div>
-  <div class="card"><h2 style="margin-top:0">Your goal</h2><p>${esc(S.goal)||'<i>No goal set yet.</i>'} <a href="#/home">Edit</a></p></div>
+  <div class="card"><h2 style="margin-top:0">Your goal & self-remediation reflection</h2>
+  <p><b>Learning Goal:</b> ${esc(S.goal)||'<i>No goal set yet.</i>'} (<a href="#/home">Edit</a>)</p>
+  <div style="margin-top:12px">
+    <label for="rf1"><b>What technique feels most solid for you now?</b></label>
+    <textarea id="rf1" rows="2" placeholder="e.g. Recognizing the difference between U-hold and V-hold, checking the 120 degree gape...">${esc(S.reflect.solid||'')}</textarea>
+  </div>
+  <div style="margin-top:12px">
+    <label for="rf2"><b>What specific point will you observe or coach next on the ward?</b></label>
+    <textarea id="rf2" rows="2" placeholder="e.g. Checking for cheek dimples and using the little finger to detach...">${esc(S.reflect.practice||'')}</textarea>
+  </div>
+</div>
   <div class="card noprint"><div class="row"><button class="btn ghost" id="exp">Download my progress (JSON)</button><button class="btn ghost" id="rst">Reset all progress</button></div></div>`);
-  $('#exp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:'application/json'}));a.download='breastfeeding-course-progress.json';a.click()};
+  $('#rf1').oninput=e=>{S.reflect.solid=e.target.value;save()};$('#rf2').oninput=e=>{S.reflect.practice=e.target.value;save()};$('#exp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:'application/json'}));a.download='breastfeeding-course-progress.json';a.click()};
   $('#rst').onclick=()=>{if(confirm('Delete all saved progress on this device?')){localStorage.removeItem(KEY);location.hash='#/home';location.reload()}};
 });
 
